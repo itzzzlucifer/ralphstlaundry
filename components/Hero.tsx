@@ -33,7 +33,7 @@ export default function Hero() {
             <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse 80% 60% at 70% 30%, transparent 0%, ${DARK} 100%)`, zIndex: 1 }} />
 
             {/* Decorative right panel */}
-            <div style={{ position: "absolute", right: 0, top: 0, width: "45%", height: "100%", zIndex: 1, overflow: "hidden" }}>
+            <div style={{ position: "absolute", right: 0, top: 0, width: "45%", height: "100%", zIndex: 1, overflow: "hidden" }} className="hidden-mobile">
                 <svg width="100%" height="100%" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, opacity: 0.07 }}>
                     {Array.from({ length: 12 }, (_, i) => (
                         <line key={i} x1={i * 60 - 100} y1="0" x2={i * 60 + 400} y2="900" stroke={GOLD} strokeWidth="1" />
@@ -52,7 +52,7 @@ export default function Hero() {
             </div>
 
             {/* Content */}
-            <div style={{ position: "relative", zIndex: 2, maxWidth: 780 }}>
+            <div style={{ position: "relative", zIndex: 2, maxWidth: 780 }} className="hero-content">
                 <motion.div
                     custom={0.2}
                     initial="hidden"
@@ -159,6 +159,7 @@ export default function Hero() {
                     borderTop: "1px solid rgba(201,168,76,0.2)",
                     paddingTop: 40,
                 }}
+                className="stats-bar"
             >
                 {stats.map((s) => (
                     <div key={s.label}>
@@ -174,7 +175,30 @@ export default function Hero() {
 
             <style>{`
         @media (max-width: 900px) {
-          section { padding: 0 24px !important; }
+          section { 
+            padding: 120px 24px 60px !important; 
+            height: auto !important;
+            min-height: 100vh !important;
+            display: block !important;
+          }
+          .hero-content {
+            margin-bottom: 60px;
+          }
+          .stats-bar {
+            position: relative !important;
+            bottom: auto !important;
+            left: auto !important;
+            right: auto !important;
+            gap: 32px !important;
+            padding-top: 32px !important;
+          }
+          h1 {
+            font-size: 42px !important;
+            line-height: 1.1 !important;
+          }
+          .hidden-mobile {
+            display: none !important;
+          }
         }
       `}</style>
         </section>

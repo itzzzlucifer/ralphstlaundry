@@ -69,7 +69,7 @@ export default function Nav() {
                 </ul>
 
                 <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-                    <Link href="/contact">
+                    <Link href="/contact" className="nav-cta-desktop">
                         <button
                             style={{
                                 padding: "10px 28px",
@@ -194,6 +194,7 @@ export default function Nav() {
         @media (max-width: 900px) {
           .hidden-mobile { display: none !important; }
           .show-mobile { display: flex !important; }
+          .nav-cta-desktop { display: none !important; }
           nav { padding-left: 24px !important; padding-right: 24px !important; }
         }
       `}</style>
