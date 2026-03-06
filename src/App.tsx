@@ -478,7 +478,7 @@ const marqueeItems: string[] = [
 const navLinks: string[] = ["About", "Services", "Capabilities", "Clients"]
 
 // ─── Component ────────────────────────────────────────────────────────────────
-export default function RalphStreetLaundry(): JSX.Element {
+export default function RalphStreetLaundry() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
