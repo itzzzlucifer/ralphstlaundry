@@ -1,5 +1,5 @@
 import type { Service, Feature, ProcessStep, Stat, GalleryItem } from "@/types";
-import { GOLD } from "@/lib/constants";
+import { GREEN } from "@/lib/constants";
 
 export const services: Service[] = [
     {
@@ -8,7 +8,7 @@ export const services: Service[] = [
         title: "Hotel Laundry Solutions",
         desc: "Purpose-built processes designed around the exacting standards of Sydney's finest hotels. We asked hoteliers exactly what they needed — then built our entire operation around those answers.",
         icon: (
-            <svg viewBox="0 0 48 48" fill="none" stroke={GOLD} strokeWidth="1.5" className="service-icon" style={{ width: 48, height: 48, marginBottom: 28, opacity: 0.7 }}>
+            <svg viewBox="0 0 48 48" fill="none" stroke={GREEN} strokeWidth="1.5" className="service-icon" style={{ width: 48, height: 48, marginBottom: 28, opacity: 0.7 }}>
                 <rect x="8" y="14" width="32" height="24" rx="2" />
                 <path d="M16 14V10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" />
                 <path d="M24 22v8M20 26h8" />
@@ -32,7 +32,7 @@ export const services: Service[] = [
         title: "Premium Linen Rental",
         desc: "The most client-friendly linen rental programs on the market. Designed specifically for hospitality — our programs meet the demanding requirements of five-star operations.",
         icon: (
-            <svg viewBox="0 0 48 48" fill="none" stroke={GOLD} strokeWidth="1.5" className="service-icon" style={{ width: 48, height: 48, marginBottom: 28, opacity: 0.7 }}>
+            <svg viewBox="0 0 48 48" fill="none" stroke={GREEN} strokeWidth="1.5" className="service-icon" style={{ width: 48, height: 48, marginBottom: 28, opacity: 0.7 }}>
                 <path d="M8 36V16l16-8 16 8v20" />
                 <path d="M8 16l16 8 16-8" />
                 <path d="M24 24v12" />
@@ -57,7 +57,7 @@ export const services: Service[] = [
         title: "365-Day Production",
         desc: "Seven days a week, year-round reliability. With a washing capacity of 2,400 kg per hour and fully automated control at every stage, we deliver brilliantly clean linen with a superfast turnaround.",
         icon: (
-            <svg viewBox="0 0 48 48" fill="none" stroke={GOLD} strokeWidth="1.5" className="service-icon" style={{ width: 48, height: 48, marginBottom: 28, opacity: 0.7 }}>
+            <svg viewBox="0 0 48 48" fill="none" stroke={GREEN} strokeWidth="1.5" className="service-icon" style={{ width: 48, height: 48, marginBottom: 28, opacity: 0.7 }}>
                 <circle cx="24" cy="24" r="16" />
                 <path d="M24 12v12l8 4" />
                 <path d="M8 24H4M44 24h-4M24 4v4M24 40v4" />

@@ -1,11 +1,11 @@
 "use client";
 
-import { GOLD, DARK } from "@/lib/constants";
+import { GREEN, NAVY, WHITE } from "@/lib/constants";
 import { marqueeItems } from "@/lib/data";
 
 export default function Marquee() {
     return (
-        <div style={{ padding: "24px 0", background: GOLD, overflow: "hidden" }}>
+        <div style={{ padding: "20px 0", background: GREEN, overflow: "hidden" }}>
             <div className="marquee-track">
                 {marqueeItems.map((item, i) => (
                     <div
@@ -13,12 +13,12 @@ export default function Marquee() {
                         style={{
                             display: "flex", alignItems: "center", gap: 32,
                             padding: "0 40px",
-                            fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase",
-                            color: DARK, fontWeight: 500, flexShrink: 0,
+                            fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase",
+                            color: NAVY, fontWeight: 700, flexShrink: 0,
                         }}
                     >
                         {item}
-                        <div style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(12,12,16,0.4)" }} />
+                        <div style={{ width: 5, height: 5, borderRadius: "50%", background: "rgba(10, 74, 117, 0.2)" }} />
                     </div>
                 ))}
             </div>

@@ -8,10 +8,14 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                gold: "#C9A84C",
+                brand: {
+                    green: "#A3CF34",
+                    blue: "#0079C1",
+                    navy: "#0A4A75",
+                },
                 cream: "#F5F0E8",
                 dark: "#0C0C10",
-                navy: "#0F1624",
+                "dark-navy": "#071D2C",
                 muted: "#8A8A9A",
             },
             fontFamily: {

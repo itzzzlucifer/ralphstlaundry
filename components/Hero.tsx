@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { GOLD, CREAM, DARK, NAVY, MUTED } from "@/lib/constants";
+import { GREEN, BLUE, CREAM, DARK, NAVY, MUTED, WHITE } from "@/lib/constants";
 import { stats } from "@/lib/data";
 
 const fadeUp = {
@@ -17,33 +17,34 @@ const fadeUp = {
 export default function Hero() {
     return (
         <section
+            className="hero-section"
             style={{
                 minHeight: "100vh",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
                 position: "relative",
-                padding: "0 60px",
                 overflow: "hidden",
+                background: WHITE,
             }}
         >
             {/* Background layers */}
-            <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/images/hero.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
-            <div style={{ position: "absolute", inset: 0, background: `linear-gradient(90deg, ${DARK} 30%, rgba(12,12,16,0.6) 100%)`, zIndex: 1 }} />
-            <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse 80% 60% at 70% 30%, transparent 0%, ${DARK} 100%)`, zIndex: 1 }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/images/hero.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0, opacity: 0.15 }} />
+            <div style={{ position: "absolute", inset: 0, background: `linear-gradient(90deg, ${WHITE} 40%, rgba(255,255,255,0) 100%)`, zIndex: 1 }} />
+            <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse 80% 60% at 75% 40%, transparent 0%, ${WHITE} 100%)`, zIndex: 1 }} />
 
             {/* Decorative right panel */}
             <div style={{ position: "absolute", right: 0, top: 0, width: "45%", height: "100%", zIndex: 1, overflow: "hidden" }} className="hidden-mobile">
-                <svg width="100%" height="100%" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, opacity: 0.07 }}>
+                <svg width="100%" height="100%" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, opacity: 0.04 }}>
                     {Array.from({ length: 12 }, (_, i) => (
-                        <line key={i} x1={i * 60 - 100} y1="0" x2={i * 60 + 400} y2="900" stroke={GOLD} strokeWidth="1" />
+                        <line key={i} x1={i * 60 - 100} y1="0" x2={i * 60 + 400} y2="900" stroke={NAVY} strokeWidth="1" />
                     ))}
                 </svg>
                 <div style={{
                     position: "absolute", top: "50%", left: "50%",
                     transform: "translate(-50%,-50%)",
                     fontFamily: "var(--font-playfair), serif", fontSize: "220px",
-                    fontWeight: 600, color: "rgba(201,168,76,0.04)",
+                    fontWeight: 600, color: "rgba(10, 74, 117, 0.02)",
                     whiteSpace: "nowrap", pointerEvents: "none",
                     userSelect: "none", letterSpacing: "-0.02em",
                 }}>
@@ -60,8 +61,8 @@ export default function Hero() {
                     variants={fadeUp}
                     style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32 }}
                 >
-                    <div style={{ width: 40, height: 1, background: GOLD }} />
-                    <span style={{ fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>
+                    <div style={{ width: 40, height: 2, background: GREEN }} />
+                    <span style={{ fontSize: 12, letterSpacing: "0.25em", textTransform: "uppercase", color: NAVY, fontWeight: 600 }}>
                         Sydney&apos;s Premier Laundry Partner
                     </span>
                 </motion.div>
@@ -74,11 +75,12 @@ export default function Hero() {
                     style={{
                         fontFamily: "var(--font-playfair), serif",
                         fontSize: "clamp(52px, 7vw, 88px)",
-                        lineHeight: 1.05, fontWeight: 500, color: CREAM,
+                        lineHeight: 1.05, fontWeight: 600, color: NAVY,
                         marginBottom: 32,
+                        letterSpacing: "-0.02em",
                     }}
                 >
-                    Where <em style={{ fontStyle: "italic", color: GOLD }}>Five-Star</em><br />
+                    Where <em style={{ fontStyle: "italic", color: GREEN, fontWeight: 500 }}>Five-Star</em><br />
                     Hotels Trust<br />
                     Their Linen
                 </motion.h1>
@@ -88,7 +90,7 @@ export default function Hero() {
                     initial="hidden"
                     animate="visible"
                     variants={fadeUp}
-                    style={{ fontSize: 16, lineHeight: 1.8, color: "rgba(245,240,232,0.55)", maxWidth: 520, marginBottom: 56, fontWeight: 300 }}
+                    style={{ fontSize: 18, lineHeight: 1.8, color: "rgba(10, 74, 117, 0.7)", maxWidth: 520, marginBottom: 56, fontWeight: 400 }}
                 >
                     Delivering immaculate linen and laundry solutions to Sydney&apos;s most prestigious hotels — every day of the year, without compromise.
                 </motion.p>
@@ -103,20 +105,24 @@ export default function Hero() {
                     <Link href="/contact">
                         <button
                             style={{
-                                padding: "16px 44px", background: GOLD, color: DARK,
-                                fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase",
-                                fontWeight: 500, cursor: "pointer", border: "none",
+                                padding: "18px 48px", background: BLUE, color: WHITE,
+                                fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase",
+                                fontWeight: 700, cursor: "pointer", border: "none",
+                                borderRadius: "4px",
                                 fontFamily: "var(--font-dm-sans), sans-serif", transition: "all 0.3s",
+                                boxShadow: "0 10px 20px rgba(0, 121, 193, 0.15)",
                             }}
                             onMouseEnter={(e: React.MouseEvent) => {
                                 const target = e.currentTarget as HTMLElement;
-                                target.style.background = "#D4B35A";
-                                target.style.transform = "translateY(-1px)";
+                                target.style.background = "#0066a3";
+                                target.style.transform = "translateY(-2px)";
+                                target.style.boxShadow = "0 15px 30px rgba(0, 121, 193, 0.25)";
                             }}
                             onMouseLeave={(e: React.MouseEvent) => {
                                 const target = e.currentTarget as HTMLElement;
-                                target.style.background = GOLD;
+                                target.style.background = BLUE;
                                 target.style.transform = "translateY(0)";
+                                target.style.boxShadow = "0 10px 20px rgba(0, 121, 193, 0.15)";
                             }}
                         >
                             Request a Proposal
@@ -125,21 +131,23 @@ export default function Hero() {
                     <Link href="/services">
                         <button
                             style={{
-                                padding: "16px 32px", background: "transparent",
-                                color: "rgba(245,240,232,0.7)",
-                                fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase",
-                                cursor: "pointer", border: "1px solid rgba(245,240,232,0.2)",
+                                padding: "18px 36px", background: "transparent",
+                                color: NAVY,
+                                fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase",
+                                cursor: "pointer", border: `2px solid rgba(10, 74, 117, 0.1)`,
+                                borderRadius: "4px",
+                                fontWeight: 600,
                                 fontFamily: "var(--font-dm-sans), sans-serif", transition: "all 0.3s",
                             }}
                             onMouseEnter={(e: React.MouseEvent) => {
                                 const target = e.currentTarget as HTMLElement;
-                                target.style.borderColor = CREAM;
-                                target.style.color = CREAM;
+                                target.style.borderColor = NAVY;
+                                target.style.background = "rgba(10, 74, 117, 0.02)";
                             }}
                             onMouseLeave={(e: React.MouseEvent) => {
                                 const target = e.currentTarget as HTMLElement;
-                                target.style.borderColor = "rgba(245,240,232,0.2)";
-                                target.style.color = "rgba(245,240,232,0.7)";
+                                target.style.borderColor = "rgba(10, 74, 117, 0.1)";
+                                target.style.background = "transparent";
                             }}
                         >
                             View Our Services
@@ -155,18 +163,18 @@ export default function Hero() {
                 transition={{ delay: 1.0, duration: 0.8 }}
                 style={{
                     position: "absolute", bottom: 60, left: 60, right: 60, zIndex: 2,
-                    display: "flex", gap: 60, flexWrap: "wrap",
-                    borderTop: "1px solid rgba(201,168,76,0.2)",
+                    display: "flex", gap: 80, flexWrap: "wrap",
+                    borderTop: `1px solid rgba(10, 74, 117, 0.1)`,
                     paddingTop: 40,
                 }}
                 className="stats-bar"
             >
                 {stats.map((s) => (
                     <div key={s.label}>
-                        <div style={{ fontFamily: "var(--font-playfair), serif", fontSize: 36, color: CREAM, fontWeight: 500 }}>
-                            {s.value}<span style={{ color: GOLD }}>{s.suffix}</span>
+                        <div style={{ fontFamily: "var(--font-playfair), serif", fontSize: 42, color: NAVY, fontWeight: 600 }}>
+                            {s.value}<span style={{ color: GREEN, fontSize: 32 }}>{s.suffix}</span>
                         </div>
-                        <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginTop: 4 }}>
+                        <div style={{ fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(10, 74, 117, 0.5)", marginTop: 4, fontWeight: 600 }}>
                             {s.label}
                         </div>
                     </div>
@@ -174,9 +182,12 @@ export default function Hero() {
             </motion.div>
 
             <style>{`
+        .hero-section {
+          padding: 0 60px;
+        }
         @media (max-width: 900px) {
-          section { 
-            padding: 120px 24px 60px !important; 
+          .hero-section { 
+            padding: 180px 24px 60px !important; 
             height: auto !important;
             min-height: 100vh !important;
             display: block !important;
@@ -189,11 +200,11 @@ export default function Hero() {
             bottom: auto !important;
             left: auto !important;
             right: auto !important;
-            gap: 32px !important;
+            gap: 40px !important;
             padding-top: 32px !important;
           }
           h1 {
-            font-size: 42px !important;
+            font-size: 48px !important;
             line-height: 1.1 !important;
           }
           .hidden-mobile {

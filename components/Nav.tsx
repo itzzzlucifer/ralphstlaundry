@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { GOLD, CREAM, DARK } from "@/lib/constants";
+import { GREEN, BLUE, NAVY, CREAM, DARK, PHONE, WHITE } from "@/lib/constants";
 import { navLinks } from "@/lib/data";
 
 export default function Nav() {
@@ -33,15 +33,21 @@ export default function Nav() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    transition: "all 0.4s ease",
-                    background: scrolled ? "rgba(12,12,16,0.95)" : "transparent",
-                    backdropFilter: scrolled ? "blur(12px)" : "none",
-                    borderBottom: scrolled ? "1px solid rgba(201,168,76,0.15)" : "none",
+                    transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                    background: scrolled ? WHITE : "transparent",
+                    boxShadow: scrolled ? "0 4px 20px rgba(10, 74, 117, 0.08)" : "none",
+                    borderBottom: scrolled ? `1px solid rgba(10, 74, 117, 0.05)` : "none",
                 }}
             >
                 <Link href="/" style={{ textDecoration: "none" }}>
-                    <div style={{ fontFamily: "var(--font-playfair), serif", fontSize: 20, letterSpacing: "0.05em", color: CREAM }}>
-                        Ralph<span style={{ color: GOLD }}>·</span>Street
+                    <div style={{
+                        fontFamily: "var(--font-playfair), serif",
+                        fontSize: 22,
+                        letterSpacing: "-0.01em",
+                        color: NAVY,
+                        fontWeight: 600
+                    }}>
+                        Ralph<span style={{ color: GREEN }}>·</span>Street
                     </div>
                 </Link>
 
@@ -52,15 +58,16 @@ export default function Nav() {
                             <Link
                                 href={link === "Services" ? "/services" : `/#${link.toLowerCase()}`}
                                 style={{
-                                    color: "rgba(245,240,232,0.6)",
+                                    color: scrolled ? "rgba(10, 74, 117, 0.7)" : "rgba(10, 74, 117, 0.8)",
                                     textDecoration: "none",
                                     fontSize: 13,
-                                    letterSpacing: "0.12em",
+                                    letterSpacing: "0.08em",
                                     textTransform: "uppercase",
+                                    fontWeight: 500,
                                     transition: "color 0.3s",
                                 }}
-                                onMouseEnter={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.color = GOLD)}
-                                onMouseLeave={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.color = "rgba(245,240,232,0.6)")}
+                                onMouseEnter={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.color = BLUE)}
+                                onMouseLeave={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.color = scrolled ? "rgba(10, 74, 117, 0.7)" : "rgba(10, 74, 117, 0.8)")}
                             >
                                 {link}
                             </Link>
@@ -73,25 +80,27 @@ export default function Nav() {
                         <button
                             style={{
                                 padding: "10px 28px",
-                                border: `1px solid ${GOLD}`,
-                                color: GOLD,
+                                border: `1px solid ${BLUE}`,
+                                color: BLUE,
                                 fontSize: 12,
-                                letterSpacing: "0.12em",
+                                letterSpacing: "0.1em",
                                 textTransform: "uppercase",
                                 cursor: "pointer",
                                 background: "transparent",
                                 transition: "all 0.3s",
+                                fontWeight: 600,
+                                borderRadius: "4px",
                                 fontFamily: "var(--font-dm-sans), sans-serif",
                             }}
                             onMouseEnter={(e: React.MouseEvent) => {
                                 const target = e.currentTarget as HTMLElement;
-                                target.style.background = GOLD;
-                                target.style.color = DARK;
+                                target.style.background = BLUE;
+                                target.style.color = WHITE;
                             }}
                             onMouseLeave={(e: React.MouseEvent) => {
                                 const target = e.currentTarget as HTMLElement;
                                 target.style.background = "transparent";
-                                target.style.color = GOLD;
+                                target.style.color = BLUE;
                             }}
                         >
                             Get a Quote
@@ -113,9 +122,9 @@ export default function Nav() {
                         }}
                         className="show-mobile"
                     >
-                        <span style={{ display: "block", width: 24, height: 1.5, background: menuOpen ? GOLD : CREAM, transition: "all 0.3s", transform: menuOpen ? "rotate(45deg) translate(4px, 4px)" : "none" }} />
-                        <span style={{ display: "block", width: 24, height: 1.5, background: menuOpen ? GOLD : CREAM, transition: "all 0.3s", opacity: menuOpen ? 0 : 1 }} />
-                        <span style={{ display: "block", width: 24, height: 1.5, background: menuOpen ? GOLD : CREAM, transition: "all 0.3s", transform: menuOpen ? "rotate(-45deg) translate(4px, -4px)" : "none" }} />
+                        <span style={{ display: "block", width: 24, height: 2, background: NAVY, transition: "all 0.3s", transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
+                        <span style={{ display: "block", width: 24, height: 2, background: NAVY, transition: "all 0.3s", opacity: menuOpen ? 0 : 1 }} />
+                        <span style={{ display: "block", width: 24, height: 2, background: NAVY, transition: "all 0.3s", transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
                     </button>
                 </div>
             </nav>
@@ -132,13 +141,12 @@ export default function Nav() {
                             position: "fixed",
                             inset: 0,
                             zIndex: 99,
-                            background: DARK,
+                            background: WHITE,
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
                             alignItems: "flex-start",
                             padding: "0 40px",
-                            borderLeft: `2px solid rgba(201,168,76,0.2)`,
                         }}
                     >
                         <nav>
@@ -163,13 +171,14 @@ export default function Nav() {
                                             style={{
                                                 fontFamily: "var(--font-playfair), serif",
                                                 fontSize: 36,
-                                                color: CREAM,
+                                                color: NAVY,
                                                 textDecoration: "none",
-                                                letterSpacing: "0.02em",
+                                                letterSpacing: "-0.01em",
+                                                fontWeight: 600,
                                                 transition: "color 0.3s",
                                             }}
-                                            onMouseEnter={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.color = GOLD)}
-                                            onMouseLeave={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.color = CREAM)}
+                                            onMouseEnter={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.color = BLUE)}
+                                            onMouseLeave={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.color = NAVY)}
                                         >
                                             {link}
                                         </Link>
@@ -181,10 +190,15 @@ export default function Nav() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.5 }}
-                            style={{ marginTop: 48, paddingTop: 48, borderTop: "1px solid rgba(201,168,76,0.15)", width: "100%" }}
+                            style={{
+                                marginTop: 48,
+                                paddingTop: 48,
+                                borderTop: `1px solid rgba(10, 74, 117, 0.1)`,
+                                width: "100%"
+                            }}
                         >
-                            <p style={{ fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(245,240,232,0.4)", marginBottom: 8 }}>Call Us</p>
-                            <p style={{ fontFamily: "var(--font-playfair), serif", fontSize: 22, color: CREAM, letterSpacing: "0.05em" }}>02 9317 3288</p>
+                            <p style={{ fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(10, 74, 117, 0.4)", marginBottom: 8 }}>Call Us</p>
+                            <p style={{ fontFamily: "var(--font-playfair), serif", fontSize: 22, color: BLUE, fontWeight: 600 }}>{PHONE}</p>
                         </motion.div>
                     </motion.div>
                 )}

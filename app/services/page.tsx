@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { useInView } from "framer-motion";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { GOLD, CREAM, DARK, NAVY, MUTED } from "@/lib/constants";
+import { GREEN, BLUE, CREAM, DARK, NAVY, MUTED, WHITE } from "@/lib/constants";
 import { services } from "@/lib/data";
 import type { Service } from "@/types";
 
@@ -20,20 +20,20 @@ function ServiceBlock({ s, index }: { s: Service; index: number }) {
             ref={ref}
             id={s.slug}
             style={{
-                padding: "100px 60px",
-                background: isEven ? DARK : NAVY,
+                padding: "140px 60px",
+                background: isEven ? WHITE : "#fcfcfd",
                 position: "relative",
                 overflow: "hidden",
             }}
         >
-            {/* Ambient glow */}
+            {/* Ambient glow - subtle on light */}
             <div style={{
                 position: "absolute",
                 top: isEven ? -100 : "auto",
                 bottom: isEven ? "auto" : -100,
                 right: -100,
                 width: 500, height: 500, borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)",
+                background: `radial-gradient(circle, rgba(163, 207, 52, 0.05) 0%, transparent 70%)`,
                 pointerEvents: "none",
             }} />
 
@@ -51,8 +51,8 @@ function ServiceBlock({ s, index }: { s: Service; index: number }) {
                     className={isEven ? "" : "service-block-right"}
                 >
                     <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32 }}>
-                        <div style={{ width: 32, height: 1, background: GOLD }} />
-                        <span style={{ fontFamily: "var(--font-playfair), serif", fontSize: 13, color: "rgba(201,168,76,0.6)", letterSpacing: "0.2em" }}>
+                        <div style={{ width: 32, height: 2, background: GREEN }} />
+                        <span style={{ fontFamily: "var(--font-playfair), serif", fontSize: 13, color: "rgba(10, 74, 117, 0.5)", letterSpacing: "0.2em", fontWeight: 700 }}>
                             {s.num}
                         </span>
                     </div>
@@ -60,31 +60,33 @@ function ServiceBlock({ s, index }: { s: Service; index: number }) {
                     <h2 style={{
                         fontFamily: "var(--font-playfair), serif",
                         fontSize: "clamp(32px, 3.5vw, 52px)",
-                        fontWeight: 500, lineHeight: 1.2, color: CREAM, marginBottom: 24,
+                        fontWeight: 600, lineHeight: 1.2, color: NAVY, marginBottom: 24,
                     }}>
                         {s.title}
                     </h2>
 
-                    <p style={{ fontSize: 15, lineHeight: 1.9, color: "rgba(245,240,232,0.5)", fontWeight: 300, marginBottom: 40 }}>
+                    <p style={{ fontSize: 16, lineHeight: 1.9, color: "rgba(10, 74, 117, 0.7)", fontWeight: 400, marginBottom: 40 }}>
                         {s.detail}
                     </p>
 
                     <Link href="/contact">
                         <button
                             style={{
-                                padding: "14px 40px", background: GOLD, color: DARK,
-                                fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase",
-                                fontWeight: 500, cursor: "pointer", border: "none",
+                                padding: "16px 44px", background: BLUE, color: WHITE,
+                                fontSize: 13, letterSpacing: "0.15em", textTransform: "uppercase",
+                                fontWeight: 700, cursor: "pointer", border: "none",
+                                borderRadius: "4px",
                                 fontFamily: "var(--font-dm-sans), sans-serif", transition: "all 0.3s",
+                                boxShadow: "0 10px 20px rgba(0, 121, 193, 0.15)"
                             }}
                             onMouseEnter={(e: React.MouseEvent) => {
                                 const target = e.currentTarget as HTMLElement;
-                                target.style.background = "#D4B35A";
-                                target.style.transform = "translateY(-1px)";
+                                target.style.background = "#0066a3";
+                                target.style.transform = "translateY(-2px)";
                             }}
                             onMouseLeave={(e: React.MouseEvent) => {
                                 const target = e.currentTarget as HTMLElement;
-                                target.style.background = GOLD;
+                                target.style.background = BLUE;
                                 target.style.transform = "translateY(0)";
                             }}
                         >
@@ -101,11 +103,13 @@ function ServiceBlock({ s, index }: { s: Service; index: number }) {
                     style={{ order: isEven ? 1 : 0 }}
                 >
                     <div style={{
-                        background: "rgba(255,255,255,0.02)",
-                        border: "1px solid rgba(255,255,255,0.08)",
-                        padding: "40px 48px",
+                        background: WHITE,
+                        border: "1px solid #f1f5f9",
+                        padding: "48px 56px",
+                        boxShadow: "0 20px 40px rgba(10, 74, 117, 0.05)",
+                        borderRadius: "4px"
                     }}>
-                        <div style={{ fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: MUTED, marginBottom: 32 }}>
+                        <div style={{ fontSize: 12, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(10, 74, 117, 0.4)", marginBottom: 32, fontWeight: 700 }}>
                             What&apos;s Included
                         </div>
                         <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
@@ -118,14 +122,14 @@ function ServiceBlock({ s, index }: { s: Service; index: number }) {
                                     style={{
                                         display: "flex", alignItems: "flex-start", gap: 16,
                                         paddingBottom: 20, marginBottom: 20,
-                                        borderBottom: i < s.inclusions.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                                        borderBottom: i < s.inclusions.length - 1 ? "1px solid #f1f5f9" : "none",
                                     }}
                                 >
                                     <div style={{
-                                        width: 4, height: 4, borderRadius: "50%",
-                                        background: GOLD, marginTop: 8, flexShrink: 0,
+                                        width: 6, height: 6, borderRadius: "50%",
+                                        background: GREEN, marginTop: 8, flexShrink: 0,
                                     }} />
-                                    <span style={{ fontSize: 14, lineHeight: 1.7, color: "rgba(245,240,232,0.6)", fontWeight: 300 }}>
+                                    <span style={{ fontSize: 15, lineHeight: 1.7, color: "rgba(10, 74, 117, 0.6)", fontWeight: 400 }}>
                                         {item}
                                     </span>
                                 </motion.li>
@@ -145,19 +149,19 @@ export default function ServicesPage() {
             <main>
                 {/* Page hero */}
                 <section style={{
-                    minHeight: "45vh",
+                    minHeight: "50vh",
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "flex-end",
-                    padding: "140px 60px 80px",
+                    justifyContent: "center",
+                    padding: "160px 60px 100px",
                     position: "relative",
                     overflow: "hidden",
-                    background: `linear-gradient(135deg, ${DARK} 0%, ${NAVY} 100%)`,
+                    background: WHITE,
                 }}>
                     <div style={{
                         position: "absolute", top: "50%", right: "10%", transform: "translateY(-50%)",
-                        fontFamily: "var(--font-playfair), serif", fontSize: "200px",
-                        fontWeight: 600, color: "rgba(201,168,76,0.04)",
+                        fontFamily: "var(--font-playfair), serif", fontSize: "240px",
+                        fontWeight: 600, color: "rgba(10, 74, 117, 0.02)",
                         pointerEvents: "none", userSelect: "none", letterSpacing: "-0.02em",
                     }}>
                         RSL
@@ -166,22 +170,23 @@ export default function ServicesPage() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        style={{ position: "relative", zIndex: 1 }}
+                        style={{ position: "relative", zIndex: 1, maxWidth: 800 }}
                     >
                         <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24 }}>
-                            <div style={{ width: 32, height: 1, background: GOLD }} />
-                            <Link href="/" style={{ fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, textDecoration: "none" }}>
+                            <div style={{ width: 40, height: 2, background: GREEN }} />
+                            <Link href="/" style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: NAVY, textDecoration: "none", fontWeight: 700 }}>
                                 Ralph Street Laundry
                             </Link>
                         </div>
                         <h1 style={{
                             fontFamily: "var(--font-playfair), serif",
-                            fontSize: "clamp(42px, 6vw, 72px)",
-                            lineHeight: 1.1, fontWeight: 500, color: CREAM,
+                            fontSize: "clamp(48px, 7vw, 88px)",
+                            lineHeight: 1.05, fontWeight: 600, color: NAVY,
+                            letterSpacing: "-0.02em"
                         }}>
-                            Our <em style={{ fontStyle: "italic", color: GOLD }}>Services</em>
+                            Our <em style={{ fontStyle: "italic", color: GREEN, fontWeight: 500 }}>Services</em>
                         </h1>
-                        <p style={{ fontSize: 16, color: "rgba(245,240,232,0.5)", marginTop: 20, fontWeight: 300, maxWidth: 560 }}>
+                        <p style={{ fontSize: 18, color: "rgba(10, 74, 117, 0.6)", marginTop: 24, fontWeight: 400, maxWidth: 560, lineHeight: 1.8 }}>
                             Three pillars of hospitality laundry excellence, purpose-built for Sydney&apos;s most prestigious hotels.
                         </p>
                     </motion.div>
@@ -191,23 +196,24 @@ export default function ServicesPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        style={{ display: "flex", gap: 32, marginTop: 40, flexWrap: "wrap", position: "relative", zIndex: 1 }}
+                        style={{ display: "flex", gap: 32, marginTop: 56, flexWrap: "wrap", position: "relative", zIndex: 1 }}
                     >
                         {services.map((s) => (
                             <a
                                 key={s.slug}
                                 href={`#${s.slug}`}
                                 style={{
-                                    display: "flex", alignItems: "center", gap: 10,
-                                    fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase",
-                                    color: GOLD, textDecoration: "none", transition: "gap 0.3s",
+                                    display: "flex", alignItems: "center", gap: 12,
+                                    fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase",
+                                    color: BLUE, textDecoration: "none", transition: "all 0.3s",
+                                    fontWeight: 700,
                                 }}
-                                onMouseEnter={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.gap = "16px")}
-                                onMouseLeave={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.gap = "10px")}
+                                onMouseEnter={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.transform = "translateX(5px)")}
+                                onMouseLeave={(e: React.MouseEvent) => ((e.currentTarget as HTMLElement).style.transform = "translateX(0)")}
                             >
                                 {s.num}. {s.title}
-                                <svg width="12" height="6" viewBox="0 0 16 8" fill="none">
-                                    <path d="M0 4h14M11 1l3 3-3 3" stroke={GOLD} strokeWidth="1.2" />
+                                <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
+                                    <path d="M0 4h14M11 1l3 3-3 3" stroke={BLUE} strokeWidth="2" />
                                 </svg>
                             </a>
                         ))}
@@ -220,11 +226,11 @@ export default function ServicesPage() {
                 ))}
 
                 {/* Bottom CTA */}
-                <section style={{ padding: "100px 60px", textAlign: "center", background: DARK, position: "relative", overflow: "hidden" }}>
+                <section style={{ padding: "140px 60px", textAlign: "center", background: WHITE, position: "relative", overflow: "hidden" }}>
                     <div style={{
                         position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-                        width: 600, height: 600, borderRadius: "50%",
-                        background: "radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%)",
+                        width: 800, height: 800, borderRadius: "50%",
+                        background: `radial-gradient(circle, rgba(163, 207, 52, 0.04) 0%, transparent 65%)`,
                         pointerEvents: "none",
                     }} />
                     <motion.div
@@ -234,32 +240,45 @@ export default function ServicesPage() {
                         transition={{ duration: 0.8 }}
                         style={{ position: "relative", zIndex: 1 }}
                     >
-                        <h2 style={{ fontFamily: "var(--font-playfair), serif", fontSize: "clamp(32px, 4vw, 56px)", color: CREAM, marginBottom: 20, lineHeight: 1.2 }}>
-                            Speak with our <em style={{ fontStyle: "italic", color: GOLD }}>team today</em>
+                        <h2 style={{
+                            fontFamily: "var(--font-playfair), serif",
+                            fontSize: "clamp(36px, 5vw, 64px)",
+                            color: NAVY,
+                            marginBottom: 24,
+                            lineHeight: 1.15,
+                            fontWeight: 600,
+                            letterSpacing: "-0.01em"
+                        }}>
+                            Speak with our <em style={{ fontStyle: "italic", color: GREEN, fontWeight: 500 }}>team today</em>
                         </h2>
-                        <p style={{ fontSize: 15, color: "rgba(245,240,232,0.45)", marginBottom: 40, maxWidth: 440, margin: "0 auto 40px", lineHeight: 1.8, fontWeight: 300 }}>
+                        <p style={{ fontSize: 17, color: "rgba(10, 74, 117, 0.6)", marginBottom: 48, maxWidth: 500, margin: "0 auto 48px", lineHeight: 1.8, fontWeight: 400 }}>
                             Every property is different. Let us craft a solution around your specific needs.
                         </p>
                         <Link href="/contact">
                             <button
                                 style={{
-                                    padding: "16px 48px", background: GOLD, color: DARK,
-                                    fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase",
-                                    fontWeight: 500, cursor: "pointer", border: "none",
+                                    padding: "20px 56px", background: GREEN, color: NAVY,
+                                    fontSize: 14, letterSpacing: "0.15em", textTransform: "uppercase",
+                                    fontWeight: 700, cursor: "pointer", border: "none",
+                                    borderRadius: "4px",
                                     fontFamily: "var(--font-dm-sans), sans-serif", transition: "all 0.3s",
                                 }}
                                 onMouseEnter={(e: React.MouseEvent) => {
                                     const target = e.currentTarget as HTMLElement;
-                                    target.style.background = "#D4B35A";
-                                    target.style.transform = "translateY(-1px)";
+                                    target.style.background = BLUE;
+                                    target.style.color = WHITE;
+                                    target.style.transform = "translateY(-3px)";
+                                    target.style.boxShadow = "0 10px 30px rgba(0, 121, 193, 0.15)";
                                 }}
                                 onMouseLeave={(e: React.MouseEvent) => {
                                     const target = e.currentTarget as HTMLElement;
-                                    target.style.background = GOLD;
+                                    target.style.background = GREEN;
+                                    target.style.color = NAVY;
                                     target.style.transform = "translateY(0)";
+                                    target.style.boxShadow = "none";
                                 }}
                             >
-                                Request a Proposal
+                                Get a Proposals
                             </button>
                         </Link>
                     </motion.div>
@@ -269,7 +288,7 @@ export default function ServicesPage() {
 
             <style>{`
         @media (max-width: 900px) {
-          .service-block-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .service-block-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
           .service-block-right { order: 0 !important; }
           section { padding-left: 24px !important; padding-right: 24px !important; }
         }
