@@ -40,8 +40,12 @@ export default function Nav() {
                 }}
             >
                 <Link href="/" style={{ textDecoration: "none" }}>
-                    <div style={{ fontFamily: "var(--font-playfair), serif", fontSize: 20, letterSpacing: "0.05em", color: CREAM }}>
-                        Ralph<span style={{ color: GOLD }}>·</span>Street
+                    <div style={{ position: "relative", width: "160px", height: "40px" }}>
+                        <img
+                            src="/images/logo-premium.png"
+                            alt="Ralph St Laundry"
+                            style={{ width: "100%", height: "100%", objectFit: "contain", filter: scrolled ? "none" : "brightness(0) invert(1)" }}
+                        />
                     </div>
                 </Link>
 

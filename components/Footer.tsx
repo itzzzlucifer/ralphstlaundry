@@ -13,8 +13,12 @@ export default function Footer() {
             display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 32,
             background: DARK,
         }}>
-            <div style={{ fontFamily: "var(--font-playfair), serif", fontSize: 18, color: CREAM }}>
-                Ralph<span style={{ color: GOLD }}>·</span>Street Laundry
+            <div style={{ width: "140px", height: "36px" }}>
+                <img
+                    src="/images/logo-premium.png"
+                    alt="Ralph St Laundry"
+                    style={{ width: "100%", height: "100%", objectFit: "contain", filter: "brightness(0) invert(1)" }}
+                />
             </div>
             <ul style={{ display: "flex", gap: 32, listStyle: "none", margin: 0, padding: 0, flexWrap: "wrap", justifyContent: "center" }}>
                 {links.map((link) => (
